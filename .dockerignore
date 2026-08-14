@@ -1,0 +1,8 @@
+.git
+.github
+var
+vendor
+docs
+benchmark
+static-build.Dockerfile
+benchmark.Caddyfile
