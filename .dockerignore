@@ -1,0 +1,11 @@
+.git
+.github
+benchmark
+docs
+private-files
+var
+vendor
+.env.local
+.env.*.local
+static-build.Dockerfile
+benchmark.Caddyfile
