@@ -1,6 +1,23 @@
-# Symfony + FrankenPHP — PHP worker mode on Clever Cloud
+# Une Fois 🇧🇪 — Symfony + FrankenPHP on Clever Cloud
 
-> A Symfony application running on FrankenPHP in worker mode, deployed as a Docker app on Clever Cloud. Demonstrates how to run a modern PHP app with persistent worker processes.
+> A Belgian-culture Symfony app running on FrankenPHP in worker mode on Clever Cloud: frietkot sauce generator, Belgian beers, comics and a little Belgian-French dictionary. The frietkot counter lives in a static PHP property, so it survives between requests in worker mode — a playful way to show persistent worker processes.
+
+### Routes
+
+| Route            | Description                                              |
+|------------------|----------------------------------------------------------|
+| `/`              | « Une Fois » homepage (frietkot, bières, BD, dico)       |
+| `/api/frites`    | JSON: random sauce + worker stats (PID, counter, uptime) |
+| `/api/belgique`  | JSON: the full Belgian culture catalogue                 |
+| `/stellar`       | Previous Stellar.ai demo homepage                        |
+
+### Create the app in a given organisation (clever-tools)
+
+```bash
+clever login
+clever create une-fois --type frankenphp --org orga_8ad87d63-9b0a-49c0-8eb6-83a643cec4f7 --region par
+clever deploy
+```
 
 ---
 
