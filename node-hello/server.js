@@ -51,7 +51,7 @@ const PAGE = `<!doctype html>
   header { background:linear-gradient(120deg,var(--navy),var(--navy2)); color:#fff; padding:20px 24px;
            display:flex; justify-content:space-between; align-items:center; border-bottom:4px solid var(--coral); }
   .brand { font-weight:800; letter-spacing:.3px; display:flex; align-items:center; gap:10px; }
-  .dot { width:14px; height:14px; border-radius:50%; background:var(--coral); box-shadow:0 0 0 4px #f9566a33; }
+  .logo { display:block; width:28px; height:28px; }
   .tag { font-size:12px; opacity:.75; }
   main { max-width:760px; margin:0 auto; padding:48px 16px; }
   h1 { font-size:clamp(34px,7vw,60px); line-height:1.05; letter-spacing:-1px; }
@@ -75,7 +75,7 @@ const PAGE = `<!doctype html>
 </head>
 <body>
 <header>
-  <div class="brand"><span class="dot"></span>Clever Cloud</div>
+  <div class="brand"><img class="logo" src="/favicon.svg" alt="" width="28" height="28">Clever Cloud</div>
   <div class="tag">Node.js · PostgreSQL · Paris</div>
 </header>
 <main>
