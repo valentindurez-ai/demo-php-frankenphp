@@ -1,5 +1,10 @@
 const http = require('http');
 const { Pool } = require('pg');
+const fs = require('fs');
+const path = require('path');
+
+// Clever Cloud hexagon mark, from CleverCloud/documentation static/images/logo.svg
+const FAVICON = fs.readFileSync(path.join(__dirname, 'favicon.svg'));
 
 // Clever Cloud injects POSTGRESQL_ADDON_URI when the PG add-on is linked.
 const pool = process.env.POSTGRESQL_ADDON_URI
@@ -33,6 +38,7 @@ const PAGE = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hello Clever Cloud</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <style>
   :root { --navy:#13172e; --navy2:#1f2547; --coral:#f9566a; --ok:#2bb673; --ko:#e5484d;
           --bg:#f4f5fa; --card:#fff; --text:#1b1e33; --muted:#6b7090; --line:#e4e6f0; }
@@ -106,8 +112,13 @@ const PAGE = `<!doctype html>
 </html>`;
 
 const server = http.createServer(async (req, res) => {
-  const path = (req.url || '/').split('?')[0];
-  if (path === '/api') {
+  const route = (req.url || '/').split('?')[0];
+  if (route === '/favicon.svg' || route === '/favicon.ico') {
+    res.writeHead(200, { 'Content-Type': 'image/svg+xml', 'Cache-Control': 'public, max-age=86400' });
+    res.end(FAVICON);
+    return;
+  }
+  if (route === '/api') {
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
     res.end(JSON.stringify(await status(), null, 2));
     return;
